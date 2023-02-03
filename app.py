@@ -1,7 +1,7 @@
 # my-lair-a > app.py
 
 from flask import Flask,  request
-from models.slack import SlackManager
+from models.slack import SlackManager, SlackManagerError
 app = Flask(__name__)
 
 slack = SlackManager()
@@ -12,21 +12,37 @@ def index():
     return "Welcome to the Slack Microservice", 200
 
 
-# Sample body {"channel_id: "CXXXXXX", "message": "Hello world :tada:"}
+# Sample body {"target_id: "CXXXXXX", "message": "Hello world :tada:"}
 @app.post('/message')
 def post_message():
-    print("Request", request.json)
-    slack.client.chat_postMessage(
-        channel=request.json["channel_id"],
-        text=request.json["message"]
-    )
+    if "target_id" in request.json and "message" in request.json:
+        try:
+            slack.send_message(
+                request.json['target_id'], request.json['message'])
+        except SlackManagerError as e:
+            return str(e), e.error_code
+    else:
+        return "Required parameters not present", 400
+
     return "Message successfully posted to channel", 200
+
+
+@app.get('/status')
+def get_status():
+    try:
+        slack.get_channel_list()
+    except SlackManagerError as e:
+        return str(e), e.error_code
+    return "Slack API is connected and working properly", 200
 
 
 @app.route('/channels')
 def get_channels():
-    response = slack.client.conversations_list()
-    channels = [(x['id'], x['name']) for x in response['channels']]
+    try:
+        channels = slack.get_channel_list()
+    except SlackManagerError as e:
+        return str(e), e.error_code
+
     return channels, 200
 
 
