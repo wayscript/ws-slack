@@ -1,7 +1,7 @@
 # my-lair-a > app.py
 
 from flask import Flask,  request
-from models.slack import SlackManager, SlackManagerError
+from managers.slack_manager import SlackManager, SlackManagerError
 app = Flask(__name__)
 
 slack = SlackManager()
