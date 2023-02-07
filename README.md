@@ -24,7 +24,7 @@ Open the OAuth & Permissions section from the app sidebar. It's the same place y
 
 Next, save the key to the [`.secrets`](https://docs.wayscript.com/platform/lairs/environment-variables#example-.env-and-.secrets-files) file in your Lair. Set the `key` as `SLACK_API_TOKEN` and the `value` as the token you obtained from slack.
 
-### 4) Verify that service is up and working correctly
+### 3) Verify that service is up and working correctly
 
 Visit the `/status` endpoint. If you get "Slack API is connected and working properly", it means the service is running and authenticated to connect with your slack workspace. The full url would be `BASE_URL/status` where the base url can be obtained from [here](https://docs.wayscript.com/platform/lairs/endpoints#viewing-your-lairs-endpoints).
 
