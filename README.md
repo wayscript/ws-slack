@@ -15,8 +15,8 @@ This template is an example of a web server inside the WayScript X lair environm
 In order to setup a slack app, complete the following tutorials.
 
 - [Create an app](https://api.slack.com/authentication/basics#creating)
-- [Request scopes](https://api.slack.com/authentication/basics#scopes) - Scopes dictate how much power your slack app posessess. For this tutorial, add the following scopes add the following scopes `channels:read`, `chat:write`, `chat:write.public`.
-- [Install to a workspace of your choice](https://api.slack.com/authentication/basics#installing)
+- [Request scopes](https://api.slack.com/authentication/basics#scopes) - Scopes dictate how much power your slack app posessess. In the sidebar of your app page, click on "OAuth & Permissions" and scroll down to the Scopes section. Add the following scopes `channels:read`, `chat:write`, `chat:write.public`.
+- [Install to a workspace of your choice](https://api.slack.com/authentication/basics#installing) - Click on the "Install App" button in the sidebar of your app page. Click on the "Install App To Workspace" to install to your workspace.
 
 ### 2) Save auth token to Lair
 
