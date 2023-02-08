@@ -1,2 +1,2 @@
-flask
-slack_sdk
+flask==2.2.2
+slack_sdk==3.19.5
