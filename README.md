@@ -30,6 +30,14 @@ Visit the `/status` endpoint. If you get "Slack API is connected and working pro
 
 You can also run the `example.py` by typing `python example.py` inside a WayScript terminal or press the play button in the top right corner of wayscript with `example.py` open.
 
+# Run tests
+
+You can run tests that cover the functionality by running
+
+```
+python -m pytest
+```
+
 # Further reading
 
 [Setup a Flask Server (Python)](https://docs.wayscript.com/quickstart-spin-up-server/python/host-a-flask-server)
