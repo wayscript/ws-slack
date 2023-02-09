@@ -10,7 +10,7 @@ class SlackManager:
     def handle_slack_exception(self, slack_error_msg):
         if slack_error_msg == 'not_authed':
             raise SlackManagerError("Slack API Key is not set", error_code=500)
-        elif slack_error_msg == ' invalid_auth':
+        elif slack_error_msg == 'invalid_auth':
             raise SlackManagerError("Slack API Key is invalid", error_code=500)
         elif slack_error_msg == 'channel_not_found':
             raise SlackManagerError(
@@ -18,7 +18,7 @@ class SlackManager:
         else:
             print("Unhandled exception ocurred: ", slack_error_msg)
             raise SlackManagerError(
-                "Unknown error ocurred, please contact the administrator", error_code=500)
+                f"Unknown error ocurred, please contact the administrator. Reference error message {slack_error_msg}.", error_code=500)
 
     def get_channel_list(self):
         try:
@@ -26,7 +26,6 @@ class SlackManager:
             channels = [(x['id'], x['name']) for x in response['channels']]
             return channels
         except SlackApiError as e:
-            print(type(e.response['error']))
             self.handle_slack_exception(e.response['error'])
 
     def send_message(self, target_id, message):

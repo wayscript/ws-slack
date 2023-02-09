@@ -15,8 +15,8 @@ This template is an example of a web server inside the WayScript X lair environm
 In order to setup a slack app, complete the following tutorials.
 
 - [Create an app](https://api.slack.com/authentication/basics#creating)
-- [Request scopes](https://api.slack.com/authentication/basics#scopes) - Scopes dictate how much power your slack app posessess. For this tutorial, add the following scopes add the following scopes `channels:read`, `chat:write`, `chat:write.public`.
-- [Install to a workspace of your choice](https://api.slack.com/authentication/basics#installing)
+- [Request scopes](https://api.slack.com/authentication/basics#scopes) - Scopes dictate how much power your slack app posessess. In the sidebar of your app page, click on "OAuth & Permissions" and scroll down to the Scopes section. Add the following scopes `channels:read`, `chat:write`, `chat:write.public`.
+- [Install to a workspace of your choice](https://api.slack.com/authentication/basics#installing) - Click on the "Install App" button in the sidebar of your app page. Click on the "Install App To Workspace" to install to your workspace.
 
 ### 2) Save auth token to Lair
 
@@ -27,6 +27,8 @@ Next, save the key to the [`.secrets`](https://docs.wayscript.com/platform/lairs
 ### 3) Verify that service is up and working correctly
 
 Visit the `/status` endpoint. If you get "Slack API is connected and working properly", it means the service is running and authenticated to connect with your slack workspace. The full url would be `BASE_URL/status` where the base url can be obtained from [here](https://docs.wayscript.com/platform/lairs/endpoints#viewing-your-lairs-endpoints).
+
+You can also run the `example.py` by typing `python example.py` inside a WayScript terminal or press the play button in the top right corner of wayscript with `example.py` open.
 
 # Further reading
 

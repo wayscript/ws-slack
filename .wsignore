@@ -1,0 +1,16 @@
+# copied from .gitignore
+*__pycache__*
+node_modules
+.secrets
+*.DS_STORE*
+# end copied from .gitignore
+
+# WayScript recommended defaults
+node_modules
+**/node_modules
+.DS_STORE
+**/.DS_Store
+__pycache__
+.git
+**/.git
+# end WayScript recommended defaults
