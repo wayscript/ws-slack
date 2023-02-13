@@ -10,7 +10,7 @@ def app():
     yield app
 
 
-def test_request_example(app):
+def test_get_channels_status(app):
     slack_manager = Mock()
     app.config["SlackManager"] = slack_manager
     sample_channels = [
@@ -38,6 +38,10 @@ def test_request_example(app):
         "error": "Slack exception ocurred: test_error"
     }
 
+
+def test_post_message(app):
+    slack_manager = Mock()
+    app.config["SlackManager"] = slack_manager
     successful_message_sent_response = {
         "message": "Message successfully posted to channel"
     }
