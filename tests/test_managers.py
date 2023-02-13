@@ -1,7 +1,7 @@
 import pytest
-from unittest.mock import patch, Mock
-from managers.slack_manager import SlackManager, SlackManagerError
+from unittest.mock import  Mock
 from slack_sdk.errors import SlackApiError
+from managers.slack_manager import SlackManager, SlackManagerError
 
 
 def test_slack_manager():
@@ -27,3 +27,4 @@ def test_slack_manager():
         slack_manager.client.chat_postMessage.side_effect = SlackApiError(
             "slack exception", {"error": 'not_authed'})
         slack_manager.send_message("test_id", "test_message")
+
