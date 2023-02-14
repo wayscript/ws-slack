@@ -3,5 +3,4 @@ node_modules
 .secrets
 *.DS_STORE*
 .wayscript
-.env
 .flaskenv

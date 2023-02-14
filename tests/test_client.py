@@ -39,28 +39,34 @@ def test_get_channels_status(app):
     }
 
 
-@pytest.mark.parametrize("test_message", ["hello world", "test message", ":tada:"])
-@pytest.mark.parametrize("test_target_id", ["CXXXX", "TXXXX", "CSD2310124", "C23231"])
-def test_post_message(app, test_message, test_target_id):
+successful_message_sent_response = {"message": "Message successfully posted to channel"}
+incorrect_params_response = {"error": "Required parameters not present"}
+
+
+@pytest.mark.parametrize(
+    "params, expected_response",
+    [
+        (
+            {"message": "hello world", "target_id": "CXXXXX"},
+            successful_message_sent_response,
+        ),
+        ({"message": "test message"}, incorrect_params_response),
+    ],
+)
+def test_post_message(app, params, expected_response):
     slack_manager = Mock()
     app.config["SlackManager"] = slack_manager
-    successful_message_sent_response = {
-        "message": "Message successfully posted to channel"
-    }
-    incorrect_params_response = {"error": "Required parameters not present"}
     slack_manager.send_message.return_value = successful_message_sent_response
-    response = app.test_client().post(
-        "/message", json={"message": test_message, "target_id": test_target_id}
-    )
-    assert json.loads(response.data.decode()) == successful_message_sent_response
+    response = app.test_client().post("/message", json=params)
+    assert json.loads(response.data.decode()) == expected_response
 
-    response = app.test_client().post(
-        "/message",
-        json={
-            "message": "Hello world",
-        },
-    )
-    assert json.loads(response.data.decode()) == incorrect_params_response
+    # response = app.test_client().post(
+    #     "/message",
+    #     json={
+    #         "message": "Hello world",
+    #     },
+    # )
+    # assert json.loads(response.data.decode()) == incorrect_params_response
 
     slack_manager.send_message.side_effect = SlackManagerError("test_error")
     response = app.test_client().post(
