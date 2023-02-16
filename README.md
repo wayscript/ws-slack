@@ -26,7 +26,7 @@ Next, save the key to the [`.secrets`](https://docs.wayscript.com/platform/lairs
 
 ### 3) Verify that service is up and working correctly
 
-Visit the `/status` endpoint. If you get "Slack API is connected and working properly", it means the service is running and authenticated to connect with your slack workspace. The full url would be `BASE_URL/status` where the base url can be obtained from [here](https://docs.wayscript.com/platform/lairs/endpoints#viewing-your-lairs-endpoints).
+Visit the `/status` endpoint. If you get "Slack API is connected and working properly" as a, it means the service is running and authenticated to connect with your slack workspace. The base url can be obtained from the endpoints tab in WayScript. You can also set whether the endpoints can be publicly accessible in the same tab. You can learn more about Lair endpoints [here](https://docs.wayscript.com/platform/lairs/endpoints). The full url would then be `BASE_URL/status`.
 
 You can also run the `example.py` by typing `python example.py` inside a WayScript terminal or press the play button in the top right corner of wayscript with `example.py` open.
 
