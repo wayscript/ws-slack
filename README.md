@@ -24,11 +24,15 @@ Open the OAuth & Permissions section from the app sidebar. It's the same place y
 
 Next, save the key to the [`.secrets`](https://docs.wayscript.com/platform/lairs/environment-variables#example-.env-and-.secrets-files) file in your Lair. Set the `key` as `SLACK_API_TOKEN` and the `value` as the token you obtained from slack.
 
-### 3) Verify that service is up and working correctly
+### 3) Deploy application
 
-Visit the `/status` endpoint. If you get "Slack API is connected and working properly" as a, it means the service is running and authenticated to connect with your slack workspace. The base url can be obtained from the endpoints tab in WayScript. You can also set whether the endpoints can be publicly accessible in the same tab. You can learn more about Lair endpoints [here](https://docs.wayscript.com/platform/lairs/endpoints). The full url would then be `BASE_URL/status`.
+A trigger should already be pre-configured. [Follow this guide](https://docs.wayscript.com/quickstart-spin-up-server/python/host-a-flask-server#configure-deploy-trigger) to set a trigger in case the trigger isn't present. Press the play button next to the trigger to deploy the flask app.
 
-You can also run the `example.py` by typing `python example.py` inside a WayScript terminal or press the play button in the top right corner of wayscript with `example.py` open.
+The app should now be accessible via the endpoint specified next to the trigger. By default, the endpoint is only privately accessible, i.e. it can only be accessed in a browser where you are already logged into WayScript. You can make it publicly accesssible by going to the endpoints tab and setting "Make endpoints publicly accessible" to true. You can learn more about endpoints [here](https://docs.wayscript.com/platform/lairs/endpoints).
+
+### 4) Verify that service is up and working correctly
+
+Visit the `ENDPOINT/status` endpoint. If you get "Slack API is connected and working properly", it means the service is running and authenticated to connect with your slack workspace. You can also run the `example.py` by typing `python example.py` inside a WayScript terminal or press the play button in the top right corner of wayscript with `example.py` open.
 
 # Further reading
 
